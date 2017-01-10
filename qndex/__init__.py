@@ -1,3 +1,3 @@
-from .classify import classify
+from .classify import def_classify
 
 __version__ = "0.0.1"

@@ -9,6 +9,9 @@ def def_classify():
     qnd.add_flag("dropout_keep_prob", type=float)
 
     def classify(feature, label):
+        if qnd.FLAGS.num_classes <= 1:
+            raise ValueError("Number of classes must be greater than 1.")
+
         return ex.classify(
             ex.mlp(
                 feature,
