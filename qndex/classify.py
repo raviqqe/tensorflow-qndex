@@ -1,5 +1,6 @@
 import argtyp
 import extenteten as ex
+import tensorflow as tf
 import qnd
 
 
@@ -21,7 +22,10 @@ def def_classify():
                 layer_sizes=[
                     *qnd.FLAGS.hidden_layer_sizes,
                     ex.num_logits(num_labels, qnd.FLAGS.num_classes)],
-                dropout_keep_prob=qnd.FLAGS.dropout_keep_prob),
+                dropout_keep_prob=(
+                    qnd.FLAGS.dropout_keep_prob
+                    if mode == tf.contrib.learn.ModeKeys.TRAIN else
+                    None)),
             label,
             num_classes=qnd.FLAGS.num_classes,
             num_labels=num_labels)
