@@ -10,7 +10,7 @@ def def_classify():
     qnd.add_flag("hidden_layer_sizes", type=argtyp.int_list, default=[100])
     qnd.add_flag("dropout_keep_prob", type=float)
 
-    def classify(feature, label=None, *, mode):
+    def classify(feature, label=None, *, mode, regularization_scale=1e-8):
         if qnd.FLAGS.num_classes <= 1:
             raise ValueError("Number of classes must be greater than 1.")
 
@@ -28,6 +28,7 @@ def def_classify():
                     None)),
             label,
             num_classes=qnd.FLAGS.num_classes,
-            num_labels=num_labels)
+            num_labels=num_labels,
+            regularization_scale=regularization_scale)
 
     return classify
