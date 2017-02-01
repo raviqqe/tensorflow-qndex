@@ -17,8 +17,13 @@ setuptools.setup(
     author="Yota Toyama",
     author_email="raviqqe@gmail.com",
     url="https://github.com/raviqqe/tensorflow-qndex/",
-    packages=["qndex"],
-    install_requires=["tensorflow-qnd", "tensorflow-extenteten", "argtyp"],
+    packages=["qndex", "qndex.nlp"],
+    install_requires=[
+        "tensorflow-qnd",
+        "tensorflow-extenteten",
+        "argtyp",
+        "listpad",
+    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
