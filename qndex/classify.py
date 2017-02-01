@@ -4,9 +4,17 @@ import tensorflow as tf
 import qnd
 
 
-def def_classify():
+def add_num_classes_flag():
     qnd.add_required_flag("num_classes", type=int)
-    qnd.add_flag("num_labels", type=int, help="Required only for inference")
+
+
+def add_num_labels_flag():
+    qnd.add_flag("num_labels", type=int)
+
+
+def def_classify():
+    add_num_classes_flag()
+    add_num_labels_flag()
     qnd.add_flag("hidden_layer_sizes", type=argtyp.int_list, default=[100])
     qnd.add_flag("dropout_keep_prob", type=float)
 
