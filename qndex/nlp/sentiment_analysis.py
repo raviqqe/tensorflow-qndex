@@ -68,7 +68,8 @@ def def_read_file():
     convert_json_example = def_convert_json_example()
 
     def read_file(filename_queue):
-        _key, value = tf.WholeFileReader().read(filename_queue)
-        return convert_json_example(value)
+        key, value = tf.WholeFileReader().read(filename_queue)
+        document, label = convert_json_example(value)
+        return {'key': key, 'document': document}, {'label': label}
 
     return read_file
