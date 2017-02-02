@@ -37,6 +37,7 @@ def def_classify():
             label,
             num_classes=qnd.FLAGS.num_classes,
             num_labels=num_labels,
+            keys=(feature.get('keys') if isinstance(feature, dict) else None),
             regularization_scale=regularization_scale)
 
     return classify
