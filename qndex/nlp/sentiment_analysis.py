@@ -15,20 +15,20 @@ __all__ = ['def_read_file']
 def def_convert_json_example():
     qnd.add_flag('document_length', type=int, default=32)
     qnd.add_flag('sentence_length', type=int, default=64)
-    add_word_file_flag()
-    classify.add_num_classes_flag()
-    classify.add_num_labels_flag()
+    words = def_words()
+    get_num_classes = classify.def_num_classes()
+    get_num_labels = classify.def_num_labels()
 
     def convert_json_example(string):
         word_indices = {word: index for index,
-                        word in enumerate(qnd.FLAGS.words)}
+                        word in enumerate(words())}
 
         def convert(string):
             example = json.loads(string.decode())
 
             document = example['document']
             label = example['label']['binary'
-                                     if qnd.FLAGS.num_classes == 2 else
+                                     if get_num_classes() == 2 else
                                      'multi']
 
             return tuple(map(
@@ -52,9 +52,9 @@ def def_convert_json_example():
 
         document_length.set_shape([])
         label.set_shape([]
-                        if (qnd.FLAGS.num_labels is None or
-                            qnd.FLAGS.num_labels == 1) else
-                        [qnd.FLAGS.num_labels])
+                        if (get_num_labels() is None or
+                            get_num_labels() == 1) else
+                        [get_num_labels()])
 
         return (tf.reshape(document,
                            [qnd.FLAGS.document_length,

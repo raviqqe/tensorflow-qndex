@@ -3,12 +3,12 @@ import typing
 from .nlp import *
 
 
-def test_def_char_file():
-    add_char_file_flag()
+def test_def_chars():
+    def_chars()
 
 
-def test_def_word_file():
-    add_word_file_flag()
+def test_def_words():
+    def_words()
 
 
 def test_def_word_array():
