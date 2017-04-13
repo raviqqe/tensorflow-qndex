@@ -28,8 +28,12 @@ def def_classify():
     qnd.add_flag("hidden_layer_sizes", type=argtyp.int_list, default=[100])
     qnd.add_flag("dropout_keep_prob", type=float)
 
-    def classify(feature, label=None, *,
-                 mode, key=None, regularization_scale=1e-8):
+    def classify(feature,
+                 label=None,
+                 *,
+                 mode,
+                 key=None,
+                 regularization_scale=1e-8):
         num_classes = get_num_classes()
 
         if num_classes <= 1:
