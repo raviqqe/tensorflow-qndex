@@ -29,7 +29,7 @@ def def_classify():
     qnd.add_flag("dropout_keep_prob", type=float)
 
     def classify(feature,
-                 label=None,
+                 true_label=None,
                  *,
                  mode,
                  key=None,
@@ -39,7 +39,7 @@ def def_classify():
         if num_classes <= 1:
             raise ValueError("Number of classes must be greater than 1.")
 
-        num_labels = get_num_labels() or ex.num_labels(label)
+        num_labels = get_num_labels() or ex.num_labels(true_label)
 
         return ex.classify(
             ex.mlp(
@@ -51,7 +51,7 @@ def def_classify():
                     qnd.FLAGS.dropout_keep_prob
                     if mode == tf.contrib.learn.ModeKeys.TRAIN else
                     None)),
-            label,
+            true_label,
             num_classes=num_classes,
             num_labels=num_labels,
             key=key,
