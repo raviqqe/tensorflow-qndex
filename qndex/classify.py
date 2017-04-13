@@ -33,7 +33,7 @@ def def_classify():
                  *,
                  mode,
                  key=None,
-                 predictions=None,
+                 predictions={},
                  regularization_scale=1e-8):
         num_classes = get_num_classes()
 
