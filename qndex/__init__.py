@@ -1,4 +1,4 @@
 from .classify import def_classify
 from . import nlp
 
-__version__ = "0.0.21"
+__version__ = "0.0.22"
